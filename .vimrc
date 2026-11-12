@@ -133,3 +133,11 @@ set noexrc               " カレントディレクトリの設定ファイル�
 set viminfo=             " 履歴やレジスタなどを終了後に保存しない
 set noundofile           " 永続的なUndo履歴を保存しない
 set noswapfile           " 未保存の編集内容を一時ファイルに保存しない
+
+" ========================================
+" Clipboard
+" ========================================
+
+inoremap <C-v> <C-r>+
+cnoremap <C-v> <C-r>+
+vnoremap <C-c> "+y
