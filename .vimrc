@@ -70,43 +70,47 @@ nnoremap gJ J             " gJで空白を調整して行を連結する
 " ========================================
 " Character width
 " ========================================
+
 if exists('*setcellwidths')
-    call setcellwidths([
-        \ [0x00B0, 0x00B1, 2], " ° ±
-        \ [0x00D7, 0x00D7, 2], " ×
-        \ [0x00F7, 0x00F7, 2], " ÷
-        \ [0x03C0, 0x03C0, 2], " π
-        \ [0x203B, 0x203B, 2], " ※
-        \ [0x203C, 0x203C, 2], " ‼
-        \ [0x2049, 0x2049, 2], " ⁉
-        \ [0x2103, 0x2103, 2], " ℃
-        \ [0x212B, 0x212B, 2], " Å
-        \ [0x2190, 0x21FF, 2], " 矢印
-        \ [0x2202, 0x2202, 2], " ∂
-        \ [0x2205, 0x2208, 2], " ∅～∈
-        \ [0x220B, 0x220B, 2], " ∋
-        \ [0x220F, 0x2213, 2], " ∏～∓
-        \ [0x221A, 0x221A, 2], " √
-        \ [0x221E, 0x221E, 2], " ∞
-        \ [0x2220, 0x2220, 2], " ∠
-        \ [0x2225, 0x2225, 2], " ∥
-        \ [0x2227, 0x222A, 2], " ∧～∪
-        \ [0x222B, 0x222B, 2], " ∫
-        \ [0x222E, 0x222E, 2], " ∮
-        \ [0x2234, 0x2235, 2], " ∴ ∵
-        \ [0x2248, 0x2248, 2], " ≈
-        \ [0x2252, 0x2252, 2], " ≒
-        \ [0x2260, 0x2267, 2], " ≠～≧
-        \ [0x2282, 0x2287, 2], " ⊂～⊇
-        \ [0x2460, 0x2473, 2], " ①～⑳
-        \ [0x2474, 0x249B, 2], " ⑴～⒛・⒈～⒛
-        \ [0x24EA, 0x24EA, 2], " ⓪
-        \ [0x25A0, 0x25CF, 2], " 図形・丸記号
-        \ [0x2605, 0x2606, 2], " ★ ☆
-        \ [0x3251, 0x325F, 2], " ㉑～㉟
-        \ [0x32B1, 0x32BF, 2]  " ㊱～㊿
-        \ ])
+    let s:cellwidths = []
+
+    call add(s:cellwidths, [0x00B0, 0x00B1, 2]) " ° ±
+    call add(s:cellwidths, [0x00D7, 0x00D7, 2]) " ×
+    call add(s:cellwidths, [0x00F7, 0x00F7, 2]) " ÷
+    call add(s:cellwidths, [0x03C0, 0x03C0, 2]) " π
+    call add(s:cellwidths, [0x203B, 0x203B, 2]) " ※
+    call add(s:cellwidths, [0x203C, 0x203C, 2]) " ‼
+    call add(s:cellwidths, [0x2049, 0x2049, 2]) " ⁉
+    call add(s:cellwidths, [0x2103, 0x2103, 2]) " ℃
+    call add(s:cellwidths, [0x212B, 0x212B, 2]) " Å
+    call add(s:cellwidths, [0x2190, 0x21FF, 2]) " 矢印
+    call add(s:cellwidths, [0x2202, 0x2202, 2]) " ∂
+    call add(s:cellwidths, [0x2205, 0x2208, 2]) " ∅～∈
+    call add(s:cellwidths, [0x220B, 0x220B, 2]) " ∋
+    call add(s:cellwidths, [0x220F, 0x2213, 2]) " ∏～∓
+    call add(s:cellwidths, [0x221A, 0x221A, 2]) " √
+    call add(s:cellwidths, [0x221E, 0x221E, 2]) " ∞
+    call add(s:cellwidths, [0x2220, 0x2220, 2]) " ∠
+    call add(s:cellwidths, [0x2225, 0x2225, 2]) " ∥
+    call add(s:cellwidths, [0x2227, 0x222A, 2]) " ∧～∪
+    call add(s:cellwidths, [0x222B, 0x222B, 2]) " ∫
+    call add(s:cellwidths, [0x222E, 0x222E, 2]) " ∮
+    call add(s:cellwidths, [0x2234, 0x2235, 2]) " ∴ ∵
+    call add(s:cellwidths, [0x2248, 0x2248, 2]) " ≈
+    call add(s:cellwidths, [0x2252, 0x2252, 2]) " ≒
+    call add(s:cellwidths, [0x2260, 0x2267, 2]) " ≠～≧
+    call add(s:cellwidths, [0x2282, 0x2287, 2]) " ⊂～⊇
+    call add(s:cellwidths, [0x2460, 0x2473, 2]) " ①～⑳
+    call add(s:cellwidths, [0x2474, 0x249B, 2]) " ⑴～⒛
+    call add(s:cellwidths, [0x24EA, 0x24EA, 2]) " ⓪
+    call add(s:cellwidths, [0x25A0, 0x25CF, 2]) " 図形・丸記号
+    call add(s:cellwidths, [0x2605, 0x2606, 2]) " ★ ☆
+    call add(s:cellwidths, [0x3251, 0x325F, 2]) " ㉑～㉟
+    call add(s:cellwidths, [0x32B1, 0x32BF, 2]) " ㊱～㊿
+
+    call setcellwidths(s:cellwidths)
 endif
+
 
 " ========================================
 " Save
