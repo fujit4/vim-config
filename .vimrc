@@ -148,3 +148,32 @@ set noswapfile           " 未保存の編集内容を一時ファイルに保�
 inoremap <C-v> <C-r>+
 cnoremap <C-v> <C-r>+
 vnoremap <C-c> "+y
+
+" ========================================
+" Window Operation Mode
+" ========================================
+
+function! s:WindowMode() abort
+    echo "[WIN] + - > < = h j k l | Esc/q/Enter: exit"
+
+    while 1
+        let l:key = getcharstr()
+
+        " 終了キー
+        if index(["\<Esc>", 'q', "\<CR>"], l:key) >= 0
+            echo ""
+            return
+        endif
+
+        " ウィンドウ操作
+        if index(['+', '-', '>', '<', '=', 'h', 'j', 'k', 'l'], l:key) >= 0
+            execute "normal! \<C-w>" . l:key
+        endif
+
+        " 操作モード表示
+        echo "[WIN] + - > < = h j k l | Esc/q/Enter: exit"
+    endwhile
+endfunction
+
+" Leader + w で開始
+nnoremap <silent> <Leader>w :call <SID>WindowMode()<CR>
