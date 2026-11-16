@@ -11,11 +11,31 @@ set number               " 行番号を表示する
 " Encoding
 " ========================================
 
-set encoding=utf-8       " Vim内部の文字コードをUTF-8にする
-set fileencoding=utf-8   " ファイル保存時の文字コードをUTF-8にする
+set encoding=utf-8                   " Vim内部の文字コードをUTF-8にする
+set fileencoding=utf-8               " ファイル保存時の文字コードをUTF-8にする
 set fileencodings=utf-8,sjis,euc-jp  " 読み込み時に試す文字コード
-set fileformats=unix,dos " LFとCRLFの改行形式に対応する
-set nobomb               " UTF-8 BOMを付けずに保存する
+set fileformats=unix,dos             " LFとCRLFの改行形式に対応する
+set nobomb                           " UTF-8 BOMを付けずに保存する
+
+" ========================================
+" Bell
+" ========================================
+
+set noerrorbells         " エラー時のビープ音を無効化する
+set novisualbell         " エラー時の画面フラッシュを無効化する
+set t_vb=                " 端末のビジュアルベルを無効化する
+
+" ========================================
+" Security / Privacy
+" ========================================
+
+set nomodeline           " ファイル内に記述されたVim設定を読み込まない
+set noexrc               " カレントディレクトリの設定ファイルを読み込まない
+
+set viminfo=             " 履歴やレジスタなどを終了後に保存しない
+set noundofile           " 永続的なUndo履歴を保存しない
+set noswapfile           " 未保存の編集内容を一時ファイルに保存しない
+
 
 " ========================================
 " Indentation
@@ -30,6 +50,17 @@ set shiftwidth=4         " 自動インデントやシフトの幅を4桁にす�
 
 set wrap                 " 長い行を画面内で折り返す
 set linebreak            " 単語の途中で折り返さない
+
+" ========================================
+" Navigation
+" ========================================
+
+set whichwrap=b,s,<,>,[,] " 行頭・行末で左右移動を折り返す
+set notimeout             " マッピングの入力待ち時間を無効化する
+
+" J and gJ
+nnoremap J gJ             " Jで改行を挿入せず行を連結する
+nnoremap gJ J             " gJで空白を調整して行を連結する
 
 " ========================================
 " Cursor
@@ -52,15 +83,23 @@ if exists('$TERM_PROGRAM') && $TERM_PROGRAM ==# 'mintty'
 endif
 
 " ========================================
-" Navigation
+" Save
 " ========================================
 
-set whichwrap=b,s,<,>,[,] " 行頭・行末で左右移動を折り返す
-set notimeout             " マッピングの入力待ち時間を無効化する
+" Ctrl+Sで保存する
+nnoremap <silent> <C-s> :write<CR>
 
-" J and gJ
-nnoremap J gJ             " Jで改行を挿入せず行を連結する
-nnoremap gJ J             " gJで空白を調整して行を連結する
+" 挿入モードでもCtrl+Sで保存する
+inoremap <silent> <C-s> <C-o>:write<CR>
+
+" ========================================
+" Clipboard
+" ========================================
+
+inoremap <C-v> <C-r>+
+cnoremap <C-v> <C-r>+
+vnoremap <C-c> "+y
+
 
 " ========================================
 " Character width
@@ -110,44 +149,6 @@ if exists('*setcellwidths')
 
     call setcellwidths(s:cellwidths)
 endif
-
-
-" ========================================
-" Save
-" ========================================
-
-" Ctrl+Sで保存する
-nnoremap <silent> <C-s> :write<CR>
-
-" 挿入モードでもCtrl+Sで保存する
-inoremap <silent> <C-s> <C-o>:write<CR>
-
-" ========================================
-" Bell
-" ========================================
-
-set noerrorbells         " エラー時のビープ音を無効化する
-set novisualbell         " エラー時の画面フラッシュを無効化する
-set t_vb=                " 端末のビジュアルベルを無効化する
-
-" ========================================
-" Security / Privacy
-" ========================================
-
-set nomodeline           " ファイル内に記述されたVim設定を読み込まない
-set noexrc               " カレントディレクトリの設定ファイルを読み込まない
-
-set viminfo=             " 履歴やレジスタなどを終了後に保存しない
-set noundofile           " 永続的なUndo履歴を保存しない
-set noswapfile           " 未保存の編集内容を一時ファイルに保存しない
-
-" ========================================
-" Clipboard
-" ========================================
-
-inoremap <C-v> <C-r>+
-cnoremap <C-v> <C-r>+
-vnoremap <C-c> "+y
 
 " ========================================
 " Window Operation Mode
