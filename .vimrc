@@ -116,8 +116,11 @@ endif
 " Save
 " ========================================
 
-nnoremap <silent> <C-s> :write<CR>       " Ctrl+Sで保存する
-inoremap <silent> <C-s> <C-o>:write<CR>  " 挿入モードでもCtrl+Sで保存する
+" Ctrl+Sで保存する
+nnoremap <silent> <C-s> :write<CR>
+
+" 挿入モードでもCtrl+Sで保存する
+inoremap <silent> <C-s> <C-o>:write<CR>
 
 " ========================================
 " Bell
