@@ -150,29 +150,26 @@ if exists('*setcellwidths')
     call setcellwidths(s:cellwidths)
 endif
 
+
 " ========================================
 " Window Operation Mode
 " ========================================
 
 function! s:WindowMode() abort
-    echo "[WIN] + - > < = h j k l | Esc/q/Enter: exit"
-
     while 1
         let l:key = getcharstr()
 
         " 終了キー
         if index(["\<Esc>", 'q', "\<CR>"], l:key) >= 0
-            echo ""
+            redraw
             return
         endif
 
         " ウィンドウ操作
         if index(['+', '-', '>', '<', '=', 'h', 'j', 'k', 'l'], l:key) >= 0
             execute "normal! \<C-w>" . l:key
+            redraw
         endif
-
-        " 操作モード表示
-        echo "[WIN] + - > < = h j k l | Esc/q/Enter: exit"
     endwhile
 endfunction
 
