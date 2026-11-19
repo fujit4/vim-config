@@ -7,6 +7,11 @@ let mapleader = " "      " Leaderキーをスペースにする
 set nocompatible         " Vi互換モードを無効化してVimの機能を使う
 set number               " 行番号を表示する
 
+colorscheme morning
+
+" 背景色を暖色系の白に変更
+highlight Normal guibg=#F0EEE2 ctermbg=230
+
 " ========================================
 " Encoding
 " ========================================
